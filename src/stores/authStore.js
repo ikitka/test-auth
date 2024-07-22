@@ -10,18 +10,20 @@ class AuthStore {
     makeAutoObservable(this);
   }
 
-  async login(username, password) {
+  async login(email, password) {
     try {
-      const response = await axiosInstance.post('/login/', { username, password });
+      console.log({ email, password });
+      const response = await axiosInstance.post('/login/', { email, password });
       this.setTokens(response.data.access, response.data.refresh);
     } catch (error) {
       console.error("Login error: ", error);
     }
   }
 
-  async register(username, password) {
+  async register(email, password) {
     try {
-      const response = await axiosInstance.post('/register/', { username, password });
+      console.log({ email, password });
+      const response = await axiosInstance.post('/register/', { email, password });
       this.setTokens(response.data.access, response.data.refresh);
     } catch (error) {
       console.error("Register error: ", error);
