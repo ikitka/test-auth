@@ -4,7 +4,6 @@ import axiosInstance from '../axiosInstance';
 
 class AuthStore {
   accessToken = localStorage.getItem('access_token') || '';
-  refreshToken = localStorage.getItem('refresh_token') || '';
 
   constructor() {
     makeAutoObservable(this);
@@ -34,18 +33,14 @@ class AuthStore {
     this.clearTokens();
   }
 
-  setTokens(access, refresh) {
+  setTokens(access) {
     this.accessToken = access;
-    this.refreshToken = refresh;
     localStorage.setItem('access_token', access);
-    localStorage.setItem('refresh_token', refresh);
   }
 
   clearTokens() {
     this.accessToken = '';
-    this.refreshToken = '';
     localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
   }
 }
 

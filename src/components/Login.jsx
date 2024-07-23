@@ -3,12 +3,12 @@ import { observer } from 'mobx-react-lite';
 import { authStore } from '../stores/authStore';
 
 const Login = observer(() => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await authStore.login(username, password);
+    await authStore.login(email, password);
   };
 
   return (
@@ -17,9 +17,9 @@ const Login = observer(() => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
